@@ -1,3 +1,3 @@
-import foo from "./modules/script";
+import foo from './modules/script';
 
 foo();
