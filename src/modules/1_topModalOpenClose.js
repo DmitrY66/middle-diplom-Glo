@@ -1,4 +1,3 @@
-// open close top modal
 const topModalOpenClose = () => {
   const topBtn = document.querySelector('#header > .container > .row > .col-xs-6 > .row > .col-sm-12 > .button > .btn');
   const headerModal = document.querySelector('.header-modal');
@@ -16,4 +15,4 @@ const topModalOpenClose = () => {
   });
 };
 
-topModalOpenClose();
+export default topModalOpenClose;

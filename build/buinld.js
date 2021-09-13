@@ -1,1 +1,1 @@
-(()=>{"use strict";alert("Hello ".concat("world"))})();
+(()=>{"use strict";var e,o,t,l;e=document.querySelector("#header > .container > .row > .col-xs-6 > .row > .col-sm-12 > .button > .btn"),o=document.querySelector(".header-modal"),t=document.querySelector(".overlay"),l=document.querySelector(".header-modal__close"),e.addEventListener("click",(function(){o.style.display="block",t.style.display="block"})),l.addEventListener("click",(function(){o.style.display="none",t.style.display="none"}))})();

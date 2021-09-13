@@ -1,3 +1,3 @@
-import foo from './modules/script';
+import topModalOpenClose from "./modules/1_topModalOpenClose";
 
-foo();
+topModalOpenClose();
