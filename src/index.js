@@ -8,4 +8,4 @@ topModalOpenClose();
 classSliderCarousel();
 classCarousel_service();
 modalService();
-timer('1 january 2022');
+timer('23 september  2021');
