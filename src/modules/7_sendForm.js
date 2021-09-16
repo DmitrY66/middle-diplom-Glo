@@ -67,6 +67,46 @@ const sendForm = () => {
         );
     }
   });
+
+  const fancyBoxModal = document.querySelectorAll('.fancyboxModal');
+
+  fancyBoxModal.forEach(el => {
+    el.addEventListener('click', () => {
+      document.body.addEventListener('submit', (e) => {
+        const target = e.target;
+        if (target.closest('.fancybox-skin')) {
+          e.preventDefault();
+
+          target.appendChild(statusMessage);
+          statusMessage.textContent = loadMessage;
+
+          const formData = new FormData(target);
+          let body = {};
+
+          formData.forEach((val, key) => {
+            body[key] = val;
+          });
+
+          postData(body)
+            .then(
+              (response) => {
+                if (response.status !== 200) {
+                  throw new Error('status network not 200');
+                }
+                statusMessage.textContent = successMessage;
+              }
+            )
+            .then(cleanInput)
+            .catch(
+              (error) => {
+                statusMessage.textContent = errorMessage;
+                console.error('errorische', error);
+              }
+            );
+        }
+      });
+    })
+  });
 };
 
 export default sendForm;

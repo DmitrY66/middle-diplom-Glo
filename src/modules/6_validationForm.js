@@ -32,7 +32,7 @@ const validationForm = () => {
       labelName = false;
     }
     if (target.value === '') {
-      target.placeholder = "Только буквы";
+      target.placeholder = "Имя русскими буквами";
       target.style.borderColor = 'green';
       target.style.boxShadow = '0 0 8px green';
     }
@@ -57,13 +57,26 @@ const validationForm = () => {
     }
   };
 
-  const orderForm = document.querySelectorAll('.col-md-6 > .order-form > .form-horizontal');
-  let btn1 = orderForm[0].querySelector('button');
-  let btn2 = orderForm[1].querySelector('button');
+  const forms = document.querySelectorAll('form');
+
+  let btn1 = forms[0].querySelector('button');
+  let btn2 = forms[1].querySelector('button');
+  let btn3 = forms[5].querySelector('button');
+  let btn4 = forms[6].querySelector('button');
   btn1.disabled = true;
   btn2.disabled = true;
 
-  orderForm.forEach(el => {
+
+  const fancyBoxModal = document.querySelectorAll('.fancyboxModal');
+  
+  fancyBoxModal.forEach(el => {
+    el.addEventListener('click', () => {
+      btn3.disabled = true;
+      btn4.disabled = true;
+    })
+  });
+
+  forms.forEach(el => {
     el.addEventListener('input', (e) => {
       let target = e.target;
 
@@ -79,6 +92,8 @@ const validationForm = () => {
 
       activeButton(btn1);
       activeButton(btn2);
+      activeButton(btn3);
+      activeButton(btn4);
     });
   });
 };
