@@ -7,6 +7,7 @@ import validationForm from "./modules/6_validationForm";
 import sendForm from "./modules/7_sendForm";
 import sertDoc from "./modules/8_sertificateDoc";
 import smoothScroll from "./modules/9_smoothScroll";
+import calculator from "./modules/10_calculator";
 
 topModalOpenClose();
 classSliderCarousel();
@@ -17,3 +18,4 @@ validationForm();
 sendForm();
 sertDoc();
 smoothScroll();
+calculator();

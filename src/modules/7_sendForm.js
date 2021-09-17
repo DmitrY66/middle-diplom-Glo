@@ -43,69 +43,112 @@ const sendForm = () => {
       statusMessage.textContent = loadMessage;
 
       const formData = new FormData(target);
-      let body = {};
 
-      formData.forEach((val, key) => {
-        body[key] = val;
-      });
+      if (document.querySelector('#calc-total')) {
+        let calcTotal = document.querySelector('#calc-total').value;
+        let body = { calcTotal };
 
-      postData(body)
-        .then(
-          (response) => {
-            if (response.status !== 200) {
-              throw new Error('status network not 200');
+        formData.forEach((val, key) => {
+          body[key] = val;
+        });
+
+        postData(body)
+          .then(
+            (response) => {
+              if (response.status !== 200) {
+                throw new Error('status network not 200');
+              }
+              statusMessage.textContent = successMessage;
             }
-            statusMessage.textContent = successMessage;
-          }
-        )
-        .then(cleanInput)
-        .catch(
-          (error) => {
-            statusMessage.textContent = errorMessage;
-            console.error('errorische', error);
-          }
-        );
+          )
+          .then(cleanInput)
+          .catch(
+            (error) => {
+              statusMessage.textContent = errorMessage;
+              console.error('errorische', error);
+            }
+          );
+      } else {
+        let body = {};
+        formData.forEach((val, key) => {
+          body[key] = val;
+        });
+
+        postData(body)
+          .then(
+            (response) => {
+              if (response.status !== 200) {
+                throw new Error('status network not 200');
+              }
+              statusMessage.textContent = successMessage;
+            }
+          )
+          .then(cleanInput)
+          .catch(
+            (error) => {
+              statusMessage.textContent = errorMessage;
+              console.error('errorische', error);
+            }
+          );
+      }
     }
-  });
 
-  const fancyBoxModal = document.querySelectorAll('.fancyboxModal');
+    if (target.closest('.fancybox-skin')) {
+      e.preventDefault();
 
-  fancyBoxModal.forEach(el => {
-    el.addEventListener('click', () => {
-      document.body.addEventListener('submit', (e) => {
-        const target = e.target;
-        if (target.closest('.fancybox-skin')) {
-          e.preventDefault();
+      target.appendChild(statusMessage);
+      statusMessage.textContent = loadMessage;
 
-          target.appendChild(statusMessage);
-          statusMessage.textContent = loadMessage;
+      const formData = new FormData(target);
 
-          const formData = new FormData(target);
-          let body = {};
+      if (document.querySelector('#calc-total')) {
+        let calcTotal = document.querySelector('#calc-total').value;
+        let body = { calcTotal };
 
-          formData.forEach((val, key) => {
-            body[key] = val;
-          });
+        formData.forEach((val, key) => {
+          body[key] = val;
+        });
 
-          postData(body)
-            .then(
-              (response) => {
-                if (response.status !== 200) {
-                  throw new Error('status network not 200');
-                }
-                statusMessage.textContent = successMessage;
+        postData(body)
+          .then(
+            (response) => {
+              if (response.status !== 200) {
+                throw new Error('status network not 200');
               }
-            )
-            .then(cleanInput)
-            .catch(
-              (error) => {
-                statusMessage.textContent = errorMessage;
-                console.error('errorische', error);
+              statusMessage.textContent = successMessage;
+            }
+          )
+          .then(cleanInput)
+          .catch(
+            (error) => {
+              statusMessage.textContent = errorMessage;
+              console.error('errorische', error);
+            }
+          );
+      } else {
+        let body = {};
+        formData.forEach((val, key) => {
+          body[key] = val;
+        });
+
+        postData(body)
+          .then(
+            (response) => {
+              if (response.status !== 200) {
+                throw new Error('status network not 200');
               }
-            );
-        }
-      });
-    })
+              statusMessage.textContent = successMessage;
+            }
+          )
+          .then(cleanInput)
+          .catch(
+            (error) => {
+              statusMessage.textContent = errorMessage;
+              console.error('errorische', error);
+            }
+          );
+      }
+    }
   });
 };
 
