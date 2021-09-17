@@ -4,13 +4,16 @@ const sendForm = () => {
   const successMessage = 'Спасибо! Мы скоро с Вами свяжемся!';
 
   const statusMessage = document.createElement('div');
+  statusMessage.id = 'statusMass';
   statusMessage.textContent = 'Тут будет сообщение!';
-  statusMessage.style.cssText = 'font-size: 1.6rem';
-  statusMessage.style.background = '#394f6a';
-  statusMessage.style.color = '#fff';
-  statusMessage.style.textAlign = 'center';
-  statusMessage.style.position = 'absolute';
-  statusMessage.style.padding = '4px 8px';
+  statusMessage.style.cssText = `
+  font-size: 1.6rem;
+  background: #394f6a;
+  color: #fff;
+  textAlign: center;
+  position: absolute;
+  padding: 4px 8px;
+  `;
 
   const cleanInput = () => {
     const formInputs = document.querySelectorAll('input');
@@ -23,6 +26,24 @@ const sendForm = () => {
     btnTypeSabmit.forEach(elem => {
       elem.disabled = true;
     });
+  };
+
+  const cleanMessage = () => {
+    const divMass = document.getElementById('statusMass').remove();
+  };
+
+  const removeModal = () => {
+    const overlay = document.querySelector('.overlay');
+    const servicesModalClose = document.querySelector('.services-modal__close');
+    const headerModalClose = document.querySelector('.header-modal__close');
+    const headerModal = document.querySelector('.header-modal');
+    const servicesModal = document.querySelector('.services-modal');
+
+    overlay.style.display = 'none';
+    servicesModalClose.style.display = 'none';
+    headerModalClose.style.display = 'none';
+    headerModal.style.display = 'none';
+    servicesModal.style.display = 'none';
   };
 
   const postData = (body) => fetch('./server.php', {
@@ -149,6 +170,9 @@ const sendForm = () => {
           );
       }
     }
+
+    setTimeout(cleanMessage, 4000);
+    setTimeout(removeModal, 4000);
   });
 };
 
