@@ -36,6 +36,14 @@ const calculator = () => {
         if (target.matches('select') || target.matches('input')) {
           countSum();
         }
+        if (target.matches('#calc-type')) {
+          if (calcType.value === '--') {
+            calcTypeMaterial.value = '--';
+            calcSquare.value = '';
+            calcTotal.placeholder = 'Итого';
+            calcTotal.value = '';
+          }
+        }
       });
     } catch (err) { }
   };
