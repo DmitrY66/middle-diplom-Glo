@@ -113,7 +113,7 @@ const validationForm = () => {
       labelPhone = false;
       btn1.disabled = true;
       btn2.disabled = true;
-      cleanInp();
+      setTimeout (cleanInp, 1000);
     }
 
     if (target.closest('.fancybox-skin')) {
@@ -122,7 +122,7 @@ const validationForm = () => {
       labelPhone = false;
       btn1.disabled = true;
       btn2.disabled = true;
-      cleanInp();
+      setTimeout (cleanInp, 1000);
     }
   });
 };
