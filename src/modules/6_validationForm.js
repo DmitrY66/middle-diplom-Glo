@@ -46,7 +46,7 @@ const validationForm = () => {
   };
 
   const validPhone = (target) => {
-    if (/\+\d{1,16}$/.test(target.value)) {
+    if (/\+[^0]\d{1,16}$/.test(target.value)) {
       target.style.borderColor = 'green';
       target.style.boxShadow = '0 0 8px green';
 
