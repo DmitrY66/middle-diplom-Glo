@@ -45,8 +45,6 @@ const timer = (deadLine) => {
       el.textContent = timer.seconds
     });
 
-    let repeatRun = setInterval(updateClock, 1000, deadLine);
-
     if (new Date().getTime() >= new Date(deadLine).getTime()) {
       clearInterval(repeatRun);
 
@@ -65,7 +63,7 @@ const timer = (deadLine) => {
     }
   };
 
-  updateClock();
+  let repeatRun = setInterval(updateClock, 1000, deadLine);
 
 };
 

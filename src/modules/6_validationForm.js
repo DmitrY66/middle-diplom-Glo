@@ -19,6 +19,13 @@ const validationForm = () => {
     });
   };
 
+  const cleanInp = () => {
+    const formInputs = document.querySelectorAll('input');
+    formInputs.forEach(elem => {
+      elem.value = '';
+    });
+  };
+
   const validName = (target) => {
     if (/^[а-яА-Яa-zA-Z\s]+$/.test(target.value)) {
       target.style.borderColor = 'green';
@@ -68,7 +75,7 @@ const validationForm = () => {
 
 
   const fancyBoxModal = document.querySelectorAll('.fancyboxModal');
-  
+
   fancyBoxModal.forEach(el => {
     el.addEventListener('click', () => {
       btn3.disabled = true;
@@ -95,6 +102,28 @@ const validationForm = () => {
       activeButton(btn3);
       activeButton(btn4);
     });
+  });
+
+  document.body.addEventListener('submit', (e) => {
+    const target = e.target;
+
+    if (target.closest('#order_1, #order_2')) {
+      e.preventDefault();
+      labelName = false;
+      labelPhone = false;
+      btn1.disabled = true;
+      btn2.disabled = true;
+      cleanInp();
+    }
+
+    if (target.closest('.fancybox-skin')) {
+      e.preventDefault();
+      labelName = false;
+      labelPhone = false;
+      btn1.disabled = true;
+      btn2.disabled = true;
+      cleanInp();
+    }
   });
 };
 
